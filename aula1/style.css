@@ -1,0 +1,21 @@
+body{
+    background-color: #FFF9C4;
+}
+
+#btnCadastro {
+    color: #4CAF50;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px;
+    border-radius: 20px;
+    border-color: #004D40;
+}
+#info {
+    display: block;
+}
+
+
+.form-input {
+    display: block;
+    margin: 10px;
+}
