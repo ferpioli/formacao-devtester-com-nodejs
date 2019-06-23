@@ -3,13 +3,10 @@
 
 <head>
     <title>Formulário</title>
-    <link rel="stylesheet" href="style.css"
-</head>
-
-<body>
+    <link rel="stylesheet" href="style.css" </head> <body>
     <h2>Faça seu cadastro</h2>
     <h5>É simples e rapido</h5>
-    <form action="sucesso.html">
+    <form >
         <input type="text" id="nome" class="form-input" placeholder="Nome completo">
         <input type="text" id="email" class="form-input" placeholder="informe seu email">
         <input type="password" id="senha" class="form-input" placeholder="senha de 6 digitos">
@@ -24,25 +21,26 @@
         </select>
 
         <div class="form-input">
-                <input type="radio" id="masculino" name="sexo" >
-                <label for="masculino">Masculino</label>
-                <input type="radio" id="feminino" name="sexo">
-                <label for="feminino">Feminino</label>
+            <input type="radio" id="masculino" name="sexo">
+            <label for="masculino">Masculino</label>
+            <input type="radio" id="feminino" name="sexo">
+            <label for="feminino">Feminino</label>
         </div>
-       <div class="form-input">
+        <div class="form-input">
             <label for="info">infomções adcionais</label>
             <textarea name="info" id="info" cols="30" rows="3"></textarea>
-       </div>
-       <div class="form-input">
+        </div>
+        <div class="form-input">
             <input type="checkbox">Deseja receber novidade?
-       </div>
-      
-        <input id="btnCadastro" type="submit" value="cadastrar">
+        </div> 
 
-
-
+       <button id="btnCadastro" onclick="enviaCadastro()">Cadastrar</button>
     </form>
+    <script type="text/javascript" src="app.js" > </script>
+<br>
+<button onclick="bemVindo()">BemVindo</button>
+<button onclick="mostraNome()">MostraNome</button>
 
-</body>
+    </body>
 
 </html>
