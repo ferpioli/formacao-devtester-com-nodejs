@@ -3,7 +3,9 @@
 
 <head>
     <title>Formulário</title>
-    <link rel="stylesheet" href="style.css" </head> <body>
+    <link rel="stylesheet" href="style.css">
+</head>
+ <body>
     <h2>Faça seu cadastro</h2>
     <h5>É simples e rapido</h5>
     <form >
@@ -14,10 +16,10 @@
 
         <select name="tipoContato" id="tipoContato" class="form-input">
             <option value="disabled selected">Selecione</option>
-            <option>Whatsapp</option>
-            <option>Telegram</option>
-            <option>ligação</option>
-            <option>SMS</option>
+            <option value="watsapp">Whatsapp</option>
+            <option value="Telegram" >Telegram</option>
+            <option value= "ligação">ligação</option>
+            <option value="SMS">SMS</option>
         </select>
 
         <div class="form-input">
@@ -31,16 +33,13 @@
             <textarea name="info" id="info" cols="30" rows="3"></textarea>
         </div>
         <div class="form-input">
-            <input type="checkbox">Deseja receber novidade?
+            <input type="checkbox" id="news">Deseja receber novidade?
         </div> 
 
        <button id="btnCadastro" onclick="enviaCadastro()">Cadastrar</button>
     </form>
     <script type="text/javascript" src="app.js" > </script>
 <br>
-<button onclick="bemVindo()">BemVindo</button>
-<button onclick="mostraNome()">MostraNome</button>
-
     </body>
 
 </html>
