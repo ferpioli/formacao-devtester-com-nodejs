@@ -13,6 +13,10 @@
 // }
 
 function enviaCadastro(event) {
+
+    var teste = $('#nome').val();
+    alert(teste);
+
     var nome = document.getElementById("nome").value;
     var email = document.getElementById("email").value;
     var senha = document.getElementById("senha").value;
@@ -49,5 +53,5 @@ function enviaCadastro(event) {
         alert(JSON.stringify(novoCadastro));
     }
 
-  
+    
 }
