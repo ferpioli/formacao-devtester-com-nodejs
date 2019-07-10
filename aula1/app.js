@@ -12,11 +12,11 @@
 //     alert(nome);
 // }
 
-function enviaCadastro(event) {
+document.getElementById("btnCadastro").addEventListener("click", function(event){
 
-    var teste = $('#nome').val();
-    alert(teste);
-
+    event.preventDefault();
+    console.log(event)
+    
     var nome = document.getElementById("nome").value;
     var email = document.getElementById("email").value;
     var senha = document.getElementById("senha").value;
@@ -52,6 +52,12 @@ function enviaCadastro(event) {
     else {
         alert(JSON.stringify(novoCadastro));
     }
+
+})
+
+function enviaCadastro(event) {
+
+   
 
     
 }
