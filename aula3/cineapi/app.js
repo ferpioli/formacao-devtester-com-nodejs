@@ -12,12 +12,12 @@ mongoose.connect('mongodb://localhost/cinedb', { useNewUrlParser: true });
 app.get('/movies', function (req, res) {
 
     let query = {}
-    
-    if(req.query.name){
+
+    if (req.query.name) {
         query.name = new RegExp(req.query.name, 'i')//like
     }
 
-    Movie.find( query, (err, result) => {
+    Movie.find(query,{}, {sort: '-date'}, (err, result) => {
         return res.status(200).json({ data: result });
     })
 })

@@ -5,8 +5,12 @@ let Movie = new mongoose.Schema({
     year: Number,
     plot: String,
     cast: [String],
-    is_playing: Boolean
+    is_playing: Boolean,
+    created_data:{
+        type: Date,
+        default: Date.now
+    }
 
-})
+});
 
 export default mongoose.model('movie', Movie);
