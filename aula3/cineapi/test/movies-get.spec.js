@@ -10,6 +10,10 @@ const expect = chai.expect;
 const request = chai.request(app);
 
 describe('get movies', () => {
+    before((done)=> {
+        MoviesModel.deleteMany({}, (err, result)=> {});
+        done();
+    })
     describe('deve retornar uma lista de filmes', () => {
 
         before((done) => {
@@ -34,6 +38,17 @@ describe('get movies', () => {
                 })
 
 
+        })
+        it('quando eu faço um filtro por nome do filme', (done)=>{
+            request
+            .get('/movies')
+            .query({name: 'vingadores'})
+            .end((err, res)=>{
+                expect(res).to.have.status(200)
+                expect(res.body.data[0].name).to.equal('Vingadores Era de Ultron')
+                expect(res.body.data[1].name).to.equal('Vingadores Endgame')
+                done()
+            })
         })
     })
 })
