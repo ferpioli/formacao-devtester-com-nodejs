@@ -19,3 +19,5 @@ app.get('/movies', function (req, res) {
 app.listen(3000, () => {
     console.log('cineApi esta no ar');
 });
+
+module.exports = app;
