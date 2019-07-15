@@ -22,6 +22,14 @@ app.get('/movies', function (req, res) {
     })
 })
 
+app.get('/movies/:id', function(req, res){
+    let id = req.params.id
+    Movie.findById({_id: id},{}, {sort: '-date'}, (err, result) => {
+        return res.status(200).json({ data: result });
+    })
+
+})
+
 app.listen(3000, () => {
     console.log('cineApi esta no ar');
 });

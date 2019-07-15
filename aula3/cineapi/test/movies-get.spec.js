@@ -10,8 +10,8 @@ const expect = chai.expect;
 const request = chai.request(app);
 
 describe('get movies', () => {
-    before((done)=> {
-        MoviesModel.deleteMany({}, (err, result)=> {});
+    before((done) => {
+        MoviesModel.deleteMany({}, (err, result) => { });
         done();
     })
     describe('deve retornar uma lista de filmes', () => {
@@ -39,16 +39,53 @@ describe('get movies', () => {
 
 
         })
-        it('quando eu faço um filtro por nome do filme', (done)=>{
+        it('quando eu faço um filtro por nome do filme', (done) => {
             request
-            .get('/movies')
-            .query({name: 'vingadores'})
-            .end((err, res)=>{
-                expect(res).to.have.status(200)
-                expect(res.body.data[0].name).to.equal('Vingadores Era de Ultron')
-                expect(res.body.data[1].name).to.equal('Vingadores Endgame')
-                done()
-            })
+                .get('/movies')
+                .query({ name: 'vingadores' })
+                .end((err, res) => {
+                    expect(res).to.have.status(200)
+                    expect(res.body.data[0].name).to.equal('Vingadores Era de Ultron')
+                    expect(res.body.data[1].name).to.equal('Vingadores Endgame')
+                    done()
+                })
         })
     })
+    describe('deve retornar um unico filme', () => {
+        it('quando eu busco por id ', (done) => {
+            let movies = [
+                { name: 'Guardioes da galaxa vol.2', year: 2017, cast: ['Chris Pratt', 'Zoe Saldana'], plot: 'Agora ja conhecidos como os guardioes da galaxia, eles viajam...' },
+
+            ]
+            MoviesModel.insertMany(movies, async (err, result) => {
+                var id = (result[0]._id);
+                request
+                    .get('/movies/'+ id)
+                    .end((err, res) => {
+                        expect(res).to.have.status(200)
+                        expect(res.body.data.name).to.eql('Guardioes da galaxa vol.2')
+                    })
+
+                done();
+
+            });
+
+
+
+        })
+    })
+    describe('deve retornar 404', ()=>{
+        it('quando o id nao existe no banco', (done)=> {
+            var id = require('mongoose').Types.ObjectId();
+            request
+                    .get('/movies/'+ id)
+                    .end((err, res) => {
+                        expect(res).to.have.status(404)
+                        
+                    })
+
+                done();
+
+        })
+    } )
 })
