@@ -60,32 +60,33 @@ describe('get movies', () => {
             MoviesModel.insertMany(movies, async (err, result) => {
                 var id = (result[0]._id);
                 request
-                    .get('/movies/'+ id)
+                    .get('/movies/' + id)
                     .end((err, res) => {
                         expect(res).to.have.status(200)
                         expect(res.body.data.name).to.eql('Guardioes da galaxa vol.2')
+                        done();
                     })
 
-                done();
+
 
             });
+
+        })
+    })
+    describe('deve retornar 404', () => {
+        it('quando o id nao existe no banco', (done) => {
+            var id = require('mongoose').Types.ObjectId();
+            request
+                .get('/movies/' + id)
+                .end((err, res) => {
+                    console.log(res.body);
+                    expect(res).to.have.status(404)
+                    expect(res.body).to.eql({})
+                    done();
+                })
 
 
 
         })
     })
-    describe('deve retornar 404', ()=>{
-        it('quando o id nao existe no banco', (done)=> {
-            var id = require('mongoose').Types.ObjectId();
-            request
-                    .get('/movies/'+ id)
-                    .end((err, res) => {
-                        expect(res).to.have.status(404)
-                        
-                    })
-
-                done();
-
-        })
-    } )
 })
