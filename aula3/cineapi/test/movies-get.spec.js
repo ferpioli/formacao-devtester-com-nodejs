@@ -1,6 +1,6 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import MoviesModel from '../models/movie'
+import moviesModel from '../models/movie'
 
 
 chai.use(chaiHttp);
@@ -10,10 +10,10 @@ const expect = chai.expect;
 const request = chai.request(app);
 
 describe('get movies', () => {
-    before((done) => {
-        MoviesModel.deleteMany({}, (err, result) => { });
-        done();
-    })
+    // before((done) => {
+    //     MoviesModel.deleteMany({}, (err, result) => { });
+    //     done();
+    // })
     describe('deve retornar uma lista de filmes', () => {
 
         before((done) => {
@@ -22,7 +22,7 @@ describe('get movies', () => {
                 { name: 'Vingadores Era de Ultron', year: 2015, cast: ['Robert Downey Jr.', 'Eliabeth Olsen'], plot: 'Ao tentar proteger o planeta de ameaças Tony Stark...' },
                 { name: 'Vingadores Endgame', year: 2019, cast: ['Robert Downey Jr.', 'Chris Evans'], plot: 'Apos Thanos eliminar metade das criaturas vivas os vingadores...' }
             ]
-            MoviesModel.insertMany(movies, (err, result) => { });
+            moviesModel.insertMany(movies, (err, result) => { });
             done();
         })
 
@@ -57,7 +57,7 @@ describe('get movies', () => {
                 { name: 'Guardioes da galaxa vol.2', year: 2017, cast: ['Chris Pratt', 'Zoe Saldana'], plot: 'Agora ja conhecidos como os guardioes da galaxia, eles viajam...' },
 
             ]
-            MoviesModel.insertMany(movies, async (err, result) => {
+            moviesModel.insertMany(movies, async (err, result) => {
                 var id = (result[0]._id);
                 request
                     .get('/movies/' + id)

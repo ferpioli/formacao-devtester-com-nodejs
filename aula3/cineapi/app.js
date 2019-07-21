@@ -37,6 +37,17 @@ app.get('/movies/:id', function (req, res) {
 
 })
 
+app.delete('/movies/:id', function (req, res) {
+    Movie.findOneAndDelete({ _id: req.params.id }, (err, result) => {
+        console.log(result);
+        if (!result) {
+            return res.status(200).send(null);
+        } else {
+            return res.status(404).send(null);
+        }
+    })
+})
+
 app.listen(3000, () => {
     console.log('cineApi esta no ar');
 });
