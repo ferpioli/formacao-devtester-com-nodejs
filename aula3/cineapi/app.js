@@ -5,9 +5,14 @@ import mongoose from 'mongoose';
 
 import Movie from './models/movie';
 const app = express();
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
+
 //const mongoose = require('mongoose');
 app.use(bodyparser.urlencoded({ extended: false }));
 mongoose.connect('mongodb://localhost/cinedb', { useNewUrlParser: true });
+
+
 
 app.get('/movies', function (req, res) {
 
@@ -46,6 +51,19 @@ app.delete('/movies/:id', function (req, res) {
             return res.status(404).send(null);
         }
     })
+})
+
+app.post('/movies', function (req, res) {
+    let movie = new Movie(req.body)
+
+    movie.save((err, data) => {
+        if (!err) {
+            return res.status(200).json({ data: data })
+
+        }
+        return res.status(500).json(err)
+    })
+
 })
 
 app.listen(3000, () => {

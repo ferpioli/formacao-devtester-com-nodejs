@@ -1,12 +1,16 @@
 import mongoose from 'mongoose';
+import { stringify } from 'querystring';
 
 let Movie = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        unique: true
+    },
     year: Number,
     plot: String,
     cast: [String],
     is_playing: Boolean,
-    created_data:{
+    created_data: {
         type: Date,
         default: Date.now
     }

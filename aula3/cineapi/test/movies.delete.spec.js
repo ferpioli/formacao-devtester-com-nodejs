@@ -22,7 +22,7 @@ describe('Delete  Movies', () => {
         }]
 
 
-        it('quando deleto por id', (done) => {
+        it.skip('quando deleto por id', (done) => {
             moviesModel.insertMany(movie , (error, result) => {
                 console.log(result)
                 request
@@ -38,34 +38,34 @@ describe('Delete  Movies', () => {
             })
 
 
-            // after((done) => {
-            //     request
-            //         .get('/movies/' + movie._id.toString())
-            //         .end((err, res) => {
-            //             expect(res).to.have.status(404)
-            //             done();
-            //         })
-            // })
+            after((done) => {
+                request
+                    .get('/movies/' + movie._id.toString())
+                    .end((err, res) => {
+                        expect(res).to.have.status(404)
+                        done();
+                    })
+            })
 
 
         })
 
-        // describe('deve retornar 404', () => {
-        //     it('quando o id nao existe no banco', (done) => {
-        //         var id = require('mongoose').Types.ObjectId()
-        //         request
-        //             .delete('/movies/' + id)
-        //             .end((err, res) => {
-        //                 console.log(res.body);
-        //                 expect(res).to.have.status(404)
-        //                 expect(res.body).to.eql({})
-        //                 done();
-        //             })
+        describe('deve retornar 404', () => {
+            it.skip('quando o id nao existe no banco', (done) => {
+                var id = require('mongoose').Types.ObjectId()
+                request
+                    .delete('/movies/' + id)
+                    .end((err, res) => {
+                        console.log(res.body);
+                        expect(res).to.have.status(404)
+                        expect(res.body).to.eql({})
+                        done();
+                    })
 
 
 
-    //         })
-    //     })
+            })
+        })
 
     })
 })
