@@ -22,6 +22,19 @@ describe("Post Movies", () => {
                 done();
             })
     })
+    describe('deve retornar erro 400',() => {
+        it('quando nao informo o nome', (done)=> {
+            request
+            .post('/movies')
+            .send({ year: 2012, cast: ["Cris Evans", "Robert Downey Jr."] })
+            .end((err, res) => {
+                expect(res).to.has.status(400);
+                done();
+            })
+
+        })
+        
+    })
 
     describe('deve retornar erro 500', () => {
         let movie = { name: "Shazam", year: 2019, cast: ["Zachary Levi"] }

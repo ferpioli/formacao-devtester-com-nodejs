@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "babel-node app.js",
-    "test": "mocha test --require babel-register --timeout 10000 --exit"
+    "test": "mocha test --require babel-register --timeout 10000 --exit",
+    "cleandb": "./scripts/delorean.sh"
   },
   "author": "Fernando Pimentel",
   "license": "ISC",

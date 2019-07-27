@@ -4,11 +4,13 @@ import { stringify } from 'querystring';
 let Movie = new mongoose.Schema({
     name: {
         type: String,
+        required: [true, "Oops! name is required."],
         unique: true
+        
     },
     year: Number,
     plot: String,
-    cast: [String],
+    cast:[String],
     is_playing: Boolean,
     created_data: {
         type: Date,

@@ -61,7 +61,11 @@ app.post('/movies', function (req, res) {
             return res.status(200).json({ data: data })
 
         }
+        if (err.name === "ValidationError") {
+            return res.status(400).json(err)
+        }
         return res.status(500).json(err)
+
     })
 
 })
