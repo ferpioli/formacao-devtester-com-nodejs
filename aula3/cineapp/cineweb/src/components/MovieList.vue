@@ -1,9 +1,9 @@
 <template>
-  <div id="movies">
+  <div id="movies" class= "container">
     <h1>{{ title }}</h1>
     <p>{{welcome}}</p>
 
-    <table class="tabela"> 
+    <table class="table table-hover"> 
       <thead>
         <th>Nome</th>
         <th>Ano</th>
@@ -55,9 +55,4 @@ export default {
 };
 </script>
 
-<style>
-.tabela{
-    display:inline-block
-}
 
-</style>
