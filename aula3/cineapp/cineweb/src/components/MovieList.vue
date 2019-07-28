@@ -1,22 +1,23 @@
 <template>
-  <div id="movies" class= "container">
+  <div id="movies" class="container">
     <h1>{{ title }}</h1>
     <p>{{welcome}}</p>
 
-    <table class="table table-hover"> 
+    <table class="table table-hover" v-if="movies.data.length > 0">
       <thead>
         <th>Nome</th>
         <th>Ano</th>
         <th>Sinopse</th>
       </thead>
       <tbody>
-        <tr v-for="movie in movies.data" :key="movie.id"> 
+        <tr v-for="movie in movies.data" :key="movie.id">
           <td>{{movie.name}}</td>
           <td>{{movie.year}}</td>
           <td>{{movie.plot}}</td>
         </tr>
       </tbody>
     </table>
+    <div v-else class= "alert alert-info">Oops! nenhum filme encontrado.</div>
   </div>
 </template>
 
@@ -28,29 +29,20 @@ export default {
       title: "cadastro de filmes",
       welcome: "seja bem vindo!",
       movies: {
-        data: [
-          { id: 1,
-            name: "Deadpool2",
-            year: 2018,
-            cast: ["Ryan Reynolds", "Josh Brolin"],
-            plot: "O Super soldado Cable vem do futuro com a missão..."
-          },
-          { id:2,
-            name: "Vingadores Era de Ultron",
-            year: 2015,
-            cast: ["Robert Downey Jr.", "Eliabeth Olsen"],
-            plot: "Ao tentar proteger o planeta de ameaças Tony Stark..."
-          },
-          { id:3,
-            name: "Vingadores Endgame",
-            year: 2019,
-            cast: ["Robert Downey Jr.", "Chris Evans"],
-            plot:
-              "Apos Thanos eliminar metade das criaturas vivas os vingadores..."
-          }
-        ]
+        data: []
       }
     };
+  },
+  methods: {
+    getMovies() {
+      window.axios.get("/movies").then(res => {
+        console.log(res);
+        this.movies.data = res.data.data;
+      });
+    }
+  },
+  mounted() {
+    this.getMovies();
   }
 };
 </script>
