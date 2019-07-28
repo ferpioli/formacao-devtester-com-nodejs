@@ -54,5 +54,9 @@ export default {
         })
 
 
+    },
+
+    update: (req,res) => {
+        //findOneAndUpdate
     }
 }

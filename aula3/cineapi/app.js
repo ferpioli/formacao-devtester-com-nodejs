@@ -23,7 +23,13 @@ app.get('/movies/:id', crud.get);
 app.delete('/movies/:id', crud.remove);
    
 app.post('/movies', crud.create);
+
+app.put('/movies/:id', crud.update)
  
+
+
+
+
 app.listen(3000, () => {
     console.log('cineApi esta no ar');
 });
