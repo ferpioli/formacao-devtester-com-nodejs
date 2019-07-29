@@ -16,7 +16,7 @@
           <td>{{movie.year}}</td>
           <td>{{movie.plot}}</td>
           <td class="text-right">
-            <button class="btn btn-outline-danger btn-sm" @click= "removeMovie">Remover</button>
+            <button class="btn btn-outline-danger btn-sm" @click.prevent= "removeMovie(movie._id)">Remover</button>
           </td>
         </tr>
       </tbody>
@@ -39,8 +39,11 @@ export default {
     };
   },
   methods: {
-    removeMovie() {
-      console.log(this.index);
+    removeMovie(id) {
+      console.log(id);
+      window.axios.delete('/movies/${id}').then(res => {
+        this.getMovies()
+      })
     },
     jumpToAndMovie() {
       this.$router.push("add");
