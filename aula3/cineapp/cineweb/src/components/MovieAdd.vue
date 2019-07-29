@@ -10,6 +10,11 @@
           <input type="number" id="year" class="form-control" placeholder="Ano de Lançamento" v-model="model.year"/>
         </div>
       </div>
+      <div class="form-row">
+          <div class="form-group col-md-12">
+              <textarea name="plot" id="plot" rows="3" v-model="model.plot" class="form-control"></textarea>
+          </div>
+      </div>
       
       <button type="sbmit" @click.prevent="createMovie" class="btn btn-primary">Salvar</button>
       <button class="btn btn-secondary" @click.prevent= "jumpToMovieList">Voltar</button>
@@ -25,7 +30,8 @@ export default {
       title: "novo filme",
       model: {
           name : "",
-          year : ""
+          year : "",
+          plot : ""
       }
     }
   },
