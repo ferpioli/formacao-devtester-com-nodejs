@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import router from './router'
+
 import bootstrapvue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -14,12 +16,13 @@ window.axios.defaults.baseURL = 'http://localhost:3000'
 
 window.axios.defaults.headers.common['Content-type'] = 'application/json'
 
+Vue.config.productionTip = false
 Vue.use(bootstrapvue)
-
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
   components: { App },
   template: '<App/>'
 })

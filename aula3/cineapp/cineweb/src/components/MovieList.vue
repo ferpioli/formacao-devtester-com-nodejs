@@ -8,16 +8,21 @@
         <th>Nome</th>
         <th>Ano</th>
         <th>Sinopse</th>
+        <th class="text-right">Açoes</th>
       </thead>
       <tbody>
         <tr v-for="movie in movies.data" :key="movie.id">
           <td>{{movie.name}}</td>
           <td>{{movie.year}}</td>
           <td>{{movie.plot}}</td>
+          <td class="text-right">
+            <button class="btn btn-outline-danger btn-sm" @click= "removeMovie">Remover</button>
+          </td>
         </tr>
       </tbody>
     </table>
-    <div v-else class= "alert alert-info">Oops! nenhum filme encontrado.</div>
+    <div v-else class="alert alert-info">Oops! nenhum filme encontrado.</div>
+    <button class="btn btn-success" @click.prevent="jumpToAndMovie()">Novo Filme</button>
   </div>
 </template>
 
@@ -34,6 +39,12 @@ export default {
     };
   },
   methods: {
+    removeMovie() {
+      console.log(this.index);
+    },
+    jumpToAndMovie() {
+      this.$router.push("add");
+    },
     getMovies() {
       window.axios.get("/movies").then(res => {
         console.log(res);
