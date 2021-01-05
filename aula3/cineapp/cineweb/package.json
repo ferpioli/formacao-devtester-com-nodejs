@@ -14,7 +14,7 @@
     "wmu_win" : "node node_modules/protractor/bin/webdriver-manager update"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.27",
     "cors": "^2.8.5",
